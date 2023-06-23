@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 import numpy as np
+from copy import deepcopy
 
 
 def run():
@@ -57,7 +58,7 @@ def obtener_plataforma_por_equipo(archivo_excel, nombre_hoja):
 def configurar_informacion_equipos(configuracion_por_terminal, equipos_plataformas, dict_plataformas):
     equipos = []
     for i in equipos_plataformas:
-        equipo = configuracion_por_terminal[i['terminal']]
+        equipo = deepcopy(configuracion_por_terminal[i['terminal']])
         if i['nombre_plataforma'] in dict_plataformas:
             plataforma = dict_plataformas[i['nombre_plataforma']]
             id_plataforma = str(plataforma['latitud']) + ',' + str(plataforma['longitud'])
